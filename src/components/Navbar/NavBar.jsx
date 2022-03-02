@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import logo from '../../img/logo/logo.jpg'
+import CarWidget from '../CarWidget/CarWidget'
 
 function NavBar() {
   return (
@@ -43,7 +44,7 @@ function NavBar() {
                 <Nav>
                 <Nav.Link href="#deets">Log in</Nav.Link>
                 <Nav.Link eventKey={2} href="#memes">
-                    Carrito
+                    <CarWidget/>
                 </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
