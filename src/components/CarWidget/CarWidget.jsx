@@ -8,7 +8,9 @@ function CarWidget() {
     <img src={logo}
     width="30"
     height="30"
-     alt="carrito" />
+     alt="carrito" 
+     
+     />
   )
 }
 
