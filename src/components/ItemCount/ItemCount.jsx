@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 import {useState} from 'react'
 
-import imgBarra from '../../img/barras/barra-20.jpg'
+// import imgBarra from '../../img/barras/barra-20.jpg'
 
 function ItemCount( {stock} ) {
 
@@ -25,7 +25,6 @@ function ItemCount( {stock} ) {
         }
     }
 
-
     const onRemove = () => {
         if (countItem > 0) {
             setCountItem( countItem => countItem - 1 );
@@ -39,7 +38,7 @@ function ItemCount( {stock} ) {
   return (
     <>
 
-        <Card style={{ width: '18rem' }} >
+        {/* <Card style={{ width: '18rem' }} >
         <Card.Img variant="top" src={imgBarra} width="100" height="180"/>
         <Card.Body>
             <Card.Title>Barra Rogue</Card.Title>
@@ -63,7 +62,7 @@ function ItemCount( {stock} ) {
             </div>
             
         </Card.Body>
-        </Card>
+        </Card> */}
 
         
     </>

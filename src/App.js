@@ -7,12 +7,14 @@ import NavBar from './components/Navbar/NavBar';
 import ItemListContainer from './containers/ItemListContainer';
 import ItemCount from './components/ItemCount/ItemCount';
 
+
 function App() {
   return (
     <div className="App">
       <NavBar/>
       <ItemListContainer greeting='¡¡¡Bienvenidos a Vikings Fitness Gear!!!' />
-      <ItemCount stock='5' ></ItemCount>
+
+      {/* <ItemCount stock='5'/> */}
     </div>
   );
 }
