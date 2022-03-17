@@ -2,6 +2,7 @@
 import {useState, useEffect} from 'react';
 import { getFetch } from "../helpers/getFetch";
 import ItemList from "../components/ItemList/ItemList"
+import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
 
 function ItemListContainer( {greeting} ) {
   
@@ -22,7 +23,7 @@ function ItemListContainer( {greeting} ) {
  
   console.log('ver el contenido de prods');
   console.log(prods);
-
+ 
   
   return (
     <>
@@ -31,9 +32,11 @@ function ItemListContainer( {greeting} ) {
       
       {/* { prods.map( (prod) => <li>{prod.nameProducto}</li>)} */}
 
+      
 
       <ItemList prods={prods} /> 
 
+      
       
     </>
   )

@@ -26,3 +26,4 @@ export const getFetch = new Promise ( (resolve, reject) => {
 } 
 
 );
+

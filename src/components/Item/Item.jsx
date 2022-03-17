@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/esm/Button';
 import Card from 'react-bootstrap/Card';
+import ItemDetailContainer from '../../containers/ItemDetailContainer/ItemDetailContainer';
 
 
 function Item( {prod} ) {
@@ -15,9 +16,9 @@ function Item( {prod} ) {
         <Card.Body>
             <Card.Title>{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{`${prod.price}`}</Card.Subtitle>
-            <Card.Text>
+            {/* <Card.Text>
                 {`${prod.descriptionProducto}`}
-            </Card.Text>
+            </Card.Text> */}
             
             <div className='row'>
                 <Card.Text>
@@ -26,7 +27,19 @@ function Item( {prod} ) {
                     <Button variant="outline-danger" size="sm" onClick={onRemove} > - </Button> */}
                 </Card.Text>    
             </div>
+
+            {/* <Button variant="outline-primary" onClick={ <ItemDetailContainer prod={prod.id} /> }>
+                    Detalle
+            </Button> */}
+            {/* <Button variant="outline-primary" onClick={ <ItemDetailContainer prod={prod.id} /> }>
+                    Detalle
+            </Button>
             
+
+            onClick={(e) => onClickHandler(e.target.getAttribute("src"))} */}
+            
+            
+
         </Card.Body>
         </Card>
 
