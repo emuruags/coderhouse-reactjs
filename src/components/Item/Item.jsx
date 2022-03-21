@@ -2,6 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/esm/Button';
 import Card from 'react-bootstrap/Card';
 import ItemDetailContainer from '../../containers/ItemDetailContainer/ItemDetailContainer';
+import { Link } from 'react-router-dom';
 
 
 function Item( {prod} ) {
@@ -15,30 +16,18 @@ function Item( {prod} ) {
         <Card.Img variant="top" src={`${prod.foto}`} width="100" height="180"/>
         <Card.Body>
             <Card.Title>{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">{`${prod.price}`}</Card.Subtitle>
-            {/* <Card.Text>
-                {`${prod.descriptionProducto}`}
-            </Card.Text> */}
+            <Card.Subtitle className="mb-2 text-muted">{`U$S ${prod.price}`}</Card.Subtitle>
             
             <div className='row'>
                 <Card.Text>
-                    {/* <Button variant="outline-primary" size="sm" onClick={onAdd} > + </Button>
-                        {countItem}
-                    <Button variant="outline-danger" size="sm" onClick={onRemove} > - </Button> */}
+
+                    <Link to={`/detalle/${prod.id}`}>
+                        <Button variant="outline-secondary">Ver Detalle</Button>
+                    </Link>
+
                 </Card.Text>    
             </div>
 
-            {/* <Button variant="outline-primary" onClick={ <ItemDetailContainer prod={prod.id} /> }>
-                    Detalle
-            </Button> */}
-            {/* <Button variant="outline-primary" onClick={ <ItemDetailContainer prod={prod.id} /> }>
-                    Detalle
-            </Button>
-            
-
-            onClick={(e) => onClickHandler(e.target.getAttribute("src"))} */}
-            
-            
 
         </Card.Body>
         </Card>

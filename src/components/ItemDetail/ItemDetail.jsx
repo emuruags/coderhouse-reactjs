@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+//import { Link } from 'react-router-dom';
 
 
 function ItemDetail( {prod} ) {
@@ -21,11 +22,10 @@ function ItemDetail( {prod} ) {
                         <Card.Img variant="top" src={`${prod.foto}`} width="100" height="180"/>
                         <Card.Body>
                             <Card.Title>{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">{`${prod.price}`}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">{`U$S ${prod.price}`}</Card.Subtitle>
                             <Card.Text>
                                 {`${prod.descriptionProducto}`}
                             </Card.Text>
-                           
                         </Card.Body>
                     </Card>
                 </Col>

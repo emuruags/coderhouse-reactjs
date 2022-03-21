@@ -2,21 +2,24 @@
 import { useState ,useEffect } from 'react';
 import { getFetch } from '../../helpers/getFetch';
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
+import { useParams } from "react-router-dom"
 
-function ItemDetailContainer( { prodID } ) {
+function ItemDetailContainer(  ) {
 
   const [prod, setProd] = useState ([])
-    
-  console.log('el valor del prodID es:');
-  console.log(prodID);
 
-  //prodID = 5;
+  const { detalleId } = useParams()
+
+  console.log('el valor detalleID recibido como prop de UseParams es:');
+  console.log(detalleId);
+    
+
 
   useEffect ( () => {
-    console.log('llamar api de productos con el getfech filtrado');
+
 
     getFetch
-    .then( resp => setProd(resp.find(prod=> parseInt(prod.id)  === parseInt(prodID) )))
+    .then( resp => setProd(resp.find(prod=> parseInt(prod.id)  === parseInt(detalleId) )))
     .catch( err => console.log(err))
     .finally( () => console.log('termino de cargar el promise filtrado'))
 
@@ -27,7 +30,6 @@ function ItemDetailContainer( { prodID } ) {
 
 
   return (
-    // <div>ItemDetailContainer</div>
     <>
 
         <ItemDetail prod={prod}/>
