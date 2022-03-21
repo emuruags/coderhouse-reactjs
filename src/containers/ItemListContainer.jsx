@@ -46,8 +46,17 @@ function ItemListContainer( {greeting} ) {
 
 
 
-      <ItemList prods={prods} /> 
+      {/* <ItemList prods={prods} />  */}
 
+
+      <Container>
+
+         <div className="row align-items-start m-3">
+
+         <ItemList prods={prods} /> 
+
+         </div>
+     </Container>
       
       
     </>

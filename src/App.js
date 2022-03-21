@@ -11,6 +11,7 @@ import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailCont
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 
 
+
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,8 @@ function App() {
         
 
         <NavBar/>
+
+
         <Routes>
           <Route exact path='/'
             
