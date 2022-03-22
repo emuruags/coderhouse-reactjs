@@ -1,4 +1,4 @@
-//import imgBarra from '../../img/barras/barra-20.jpg' 
+
 const productos = [
         { id: 1, idCategoria: 1, categoriaDescripcion: 'Barras', nameProducto: "Ohio Power Bar - Black Zinc", descriptionProducto:'Peso: 20kg\nLongitud: 2,18 mts\nCromada Revestido manga: Cromado\nRodamiento: Buje', price: 200   ,foto:'../img/barras/barra-20.jpg' },
         { id: 2, idCategoria: 1, categoriaDescripcion: 'Barras', nameProducto: "Ohio Power Bar - Cerakote", descriptionProducto:'Peso: 20kg\nLongitud: 2,18 mts\nCromada Revestido manga: Red\nRodamiento: Buje', price: 300   ,foto:'../img/barras/barra-ohio.jpg' },

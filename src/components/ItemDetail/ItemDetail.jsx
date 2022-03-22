@@ -15,23 +15,6 @@ function ItemDetail( {prod} ) {
   return (
     //<div>ItemDetail</div>
     <>
-        {/* <Container>
-            <Row>
-                <Col>
-                    <Card key={prod.id} style={{ width: '18rem' }} >
-                        <Card.Img variant="top" src={`${prod.foto}`} width="100" height="180"/>
-                        <Card.Body>
-                            <Card.Title>{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">{`U$S ${prod.price}`}</Card.Subtitle>
-                            <Card.Text>
-                                {`${prod.descriptionProducto}`}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        </Container> */}
-
 
         <Container>
             <Row>
