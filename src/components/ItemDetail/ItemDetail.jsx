@@ -4,13 +4,41 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import ItemCount from '../ItemCount/ItemCount';
 //import { Link } from 'react-router-dom';
+import {useState} from 'react'
+import ItemCheckOut from '../ItemCheckOut/ItemCheckOut';
+import { Link } from 'react-router-dom';
+
+
 
 
 function ItemDetail( {prod} ) {
 
+    const [isCheckout, setCheckout] = useState(false);
+
     console.log('el objeto prod de ItemDetail tiene:');
     console.log(prod);
+
+
+    // const onAdd = (cant) => {
+    //     console.log(cant)
+    // }
+
+    const onAdd = (countItem) => {
+
+
+        if (prod.stock >= countItem) {
+            // Hemos recibido un evento del ItemCount
+            console.log('el valor de countItem es:');
+            console.log(countItem);
+
+            setCheckout(true);
+        }
+
+    }
+       
 
   return (
     //<div>ItemDetail</div>
@@ -37,6 +65,63 @@ function ItemDetail( {prod} ) {
                                         {`${prod.descriptionProducto}`}
                                     </Card.Text>
                                 </Card.Body>
+                                <Card.Footer>
+                                    {/* <Button className=''variant="outline-primary" size="sm" onClick={onAdd} > + </Button>
+                                        {countItem}
+                                    <Button className='ml-2' variant="outline-danger" size="sm" onClick={onRemove} > - </Button> */}
+
+                                    {/* <Container>
+                                        <Row>
+                                            <Col>
+                                                <Button className='' variant="outline-primary" size="sm" > + </Button>
+                                            </Col>
+                                            <Col>
+                                            <Form.Control  size="sm" type="text" placeholder=""  />
+                                            </Col>
+                                            <Col>
+                                            <Button className='' variant="outline-danger" size="sm" > - </Button>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                            <Button className='mt-2 ' size="sm" variant="outline-secondary">Agregar al Carrito</Button>
+                                            </Col>                                            
+                                        </Row>
+                                    </Container> */}
+
+                                    <Container>
+                                        {/* Funcionalidad SIN "Ver Carrito" */}
+                                        <Row>
+                                            <Col>
+                                                { isCheckout ? <ItemCheckOut/> : <ItemCount initial={1} stock={prod.stock} onAdd = { onAdd }/>}
+                                            </Col>                                            
+                                        </Row>
+
+                                        {/* Funcionalidad con "Ver Carrito" */}
+                                        {/* <Row>
+                                            <Col>
+                                                <ItemCount initial={1} stock={prod.stock} onAdd = { onAdd }/>
+                                            </Col>                                            
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                                { isCheckout ? <ItemCheckOut/> :
+                                                
+                                                <Link to='/cart'>
+                                                    <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={console.log('ir a cart') } >
+                                                        Ver Carrito
+                                                    </Button>
+                                                </Link>
+
+                                                }
+                                            </Col>                                            
+                                        </Row> */}
+                                        
+
+                                    </Container>
+
+
+                                </Card.Footer>
                             </Card>
 
                         </div>

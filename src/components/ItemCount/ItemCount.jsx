@@ -1,12 +1,16 @@
 //import React from 'react'
 import Button from 'react-bootstrap/esm/Button';
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 
 import {useState} from 'react'
 
 // import imgBarra from '../../img/barras/barra-20.jpg'
 
-function ItemCount( {stock} ) {
+function ItemCount( {stock, onAdd} ) {
 
     const [countItem, setCountItem] = useState(0);
 
@@ -15,7 +19,7 @@ function ItemCount( {stock} ) {
     //console.log('el stock es');
     //console.log(constStock);
 
-    const onAdd = () => {
+    const onIncrease= () => {
         if (countItem < constStock ) {
             setCountItem( countItem => countItem + 1 );
             // console.log('el stock actual es:');
@@ -25,7 +29,7 @@ function ItemCount( {stock} ) {
         }
     }
 
-    const onRemove = () => {
+    const onDecrease = () => {
         if (countItem > 0) {
             setCountItem( countItem => countItem - 1 );
             // console.log('el stock actual es:');
@@ -34,6 +38,11 @@ function ItemCount( {stock} ) {
             // console.log(countItem);
         }
     }
+
+    const agregar = () => {
+        onAdd( countItem );
+    }
+    
 
   return (
     <>
@@ -63,6 +72,27 @@ function ItemCount( {stock} ) {
             
         </Card.Body>
         </Card> */}
+
+        <Container>
+            <Row>
+                <Col>
+                    <Button className='' variant="outline-primary" size="sm" onClick={onIncrease} > + </Button>
+                </Col>
+                <Col>
+                <Form.Control  size="sm text-center" type="text" placeholder=""  value = {countItem} >
+                    
+                </Form.Control>
+                </Col>
+                <Col>
+                <Button className='' variant="outline-danger" size="sm" onClick={onDecrease} > - </Button>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={ agregar } > Agregar al Carrito </Button>
+                </Col>                                            
+            </Row>
+        </Container>
 
         
     </>
