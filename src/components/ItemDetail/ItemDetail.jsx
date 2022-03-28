@@ -10,13 +10,16 @@ import ItemCount from '../ItemCount/ItemCount';
 import {useState} from 'react'
 import ItemCheckOut from '../ItemCheckOut/ItemCheckOut';
 import { Link } from 'react-router-dom';
-
+import { useCartContext } from '../../context/CarContext';
 
 
 
 function ItemDetail( {prod} ) {
 
     const [isCheckout, setCheckout] = useState(false);
+    
+    /// Declaracion para usar el Contexto
+    const {addToCart} = useCartContext()
 
     console.log('el objeto prod de ItemDetail tiene:');
     console.log(prod);
@@ -34,6 +37,9 @@ function ItemDetail( {prod} ) {
             console.log('el valor de countItem es:');
             console.log(countItem);
 
+            /// Agregamos el item al contexto
+            addToCart( { ...prod, quantity: countItem } );
+            
             setCheckout(true);
         }
 
@@ -107,11 +113,19 @@ function ItemDetail( {prod} ) {
                                             <Col>
                                                 { isCheckout ? <ItemCheckOut/> :
                                                 
-                                                <Link to='/cart'>
-                                                    <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={console.log('ir a cart') } >
+                                                <>
+                                                    <Link to='/cart'>
+                                                        <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={console.log('ir a cart') } >
                                                         Ver Carrito
-                                                    </Button>
-                                                </Link>
+                                                        </Button>
+                                                    </Link>
+                                                    <Link to='/'>
+                                                        <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={console.log('Seguir Comprando') } >
+                                                        Seguir Comprando
+                                                        </Button>
+                                                    </Link>
+                                                </>
+
 
                                                 }
                                             </Col>                                            

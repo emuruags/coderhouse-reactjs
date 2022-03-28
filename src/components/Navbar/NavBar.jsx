@@ -107,7 +107,7 @@ function NavBar() {
 
                             </Nav>
                             <Nav>
-                            <Nav.Link href="#deets">Log in</Nav.Link>
+
                             <Nav.Link eventKey={2} href="#memes">
                                 <CarWidget/>
                             </Nav.Link>

@@ -12,7 +12,7 @@ import {useState} from 'react'
 
 function ItemCount( {stock, onAdd} ) {
 
-    const [countItem, setCountItem] = useState(0);
+    const [countItem, setCountItem] = useState(1);
 
     const constStock = parseInt(stock);
     
@@ -30,7 +30,7 @@ function ItemCount( {stock, onAdd} ) {
     }
 
     const onDecrease = () => {
-        if (countItem > 0) {
+        if (countItem > 1) {
             setCountItem( countItem => countItem - 1 );
             // console.log('el stock actual es:');
             // console.log(constStock);
@@ -76,20 +76,20 @@ function ItemCount( {stock, onAdd} ) {
         <Container>
             <Row>
                 <Col>
+                    <Button className='' variant="outline-danger" size="sm" onClick={onDecrease} > - </Button>
+                </Col>
+                <Col>
+                    <Form.Control  size="sm text-center" type="text" placeholder=""  value = {countItem} >
+                        
+                    </Form.Control>
+                </Col>
+                <Col>
                     <Button className='' variant="outline-primary" size="sm" onClick={onIncrease} > + </Button>
-                </Col>
-                <Col>
-                <Form.Control  size="sm text-center" type="text" placeholder=""  value = {countItem} >
-                    
-                </Form.Control>
-                </Col>
-                <Col>
-                <Button className='' variant="outline-danger" size="sm" onClick={onDecrease} > - </Button>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={ agregar } > Agregar al Carrito </Button>
+                    <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={ agregar } > Agregar al Carrito </Button>
                 </Col>                                            
             </Row>
         </Container>

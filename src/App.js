@@ -10,6 +10,7 @@ import ItemCount from './components/ItemCount/ItemCount';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Cart from './components/Cart/Cart';
+import CartContextProvider from './context/CarContext';
 
 
 
@@ -19,41 +20,44 @@ function App() {
 
       <BrowserRouter>
         
-
-        <NavBar/>
-
-
-        <Routes>
-          <Route exact path='/'
-            
-            element={ <ItemListContainer greeting='¡¡¡Bienvenidos a Vikings Fitness Gear!!!' /> }
-            
-          />
-          <Route path='/categoria/:Id' 
-                  element={ <ItemListContainer greeting='¡¡¡Bienvenidos a Vikings Fitness Gear desde ROUTE CATEGORIA/:ID!!!' /> }
-            
-
-          />
-          <Route path='/detalle/:detalleId' 
-                  element={ <ItemDetailContainer  /> }
-            
-
-          />
-          <Route path='/item/:detalleId' 
-                  element={ <ItemDetailContainer  /> }
-            
-
-          />
-          <Route path='/cart' 
-                  element={ <Cart/> }
-            
-
-          />
+        <CartContextProvider>
+          
+          <NavBar/>
 
 
+          <Routes>
+            <Route exact path='/'
+              
+              element={ <ItemListContainer greeting='¡¡¡Bienvenidos a Vikings Fitness Gear!!!' /> }
+              
+            />
+            <Route path='/categoria/:Id' 
+                    element={ <ItemListContainer greeting='¡¡¡Bienvenidos a Vikings Fitness Gear desde ROUTE CATEGORIA/:ID!!!' /> }
+              
 
-          <Route path='/*' element={<Navigate to='/' />} />
-        </Routes>
+            />
+            <Route path='/detalle/:detalleId' 
+                    element={ <ItemDetailContainer  /> }
+              
+
+            />
+            <Route path='/item/:detalleId' 
+                    element={ <ItemDetailContainer  /> }
+              
+
+            />
+            <Route path='/cart' 
+                    element={ <Cart/> }
+              
+
+            />
+
+
+
+            <Route path='/*' element={<Navigate to='/' />} />
+          </Routes>
+        </CartContextProvider>
+        
       </BrowserRouter>
 
       
