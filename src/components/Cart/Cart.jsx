@@ -45,8 +45,6 @@ function Cart() {
 
                                   { cartList.map( (prod) =>   
                                     <>
-
-
                                       <Container>
                                         <Row>
                                           <Col>
@@ -79,10 +77,7 @@ function Cart() {
 
                                         </Row>
                                       </Container>
-
-                              
                                     </>
-
 
                                   )}
 
@@ -94,7 +89,6 @@ function Cart() {
                                 <Card>
                                   <Card.Header>Resumen de Compra</Card.Header>
                                   <Card.Body>
-                                    {/* <Card.Title>Total</Card.Title> */}
                                     <Card.Text>
                                       <Card.Subtitle>
                                         Cantidad de items: { quantityIconCart() }
@@ -127,8 +121,6 @@ function Cart() {
 
 
       </Container>
-
-  
 
 
     </>
