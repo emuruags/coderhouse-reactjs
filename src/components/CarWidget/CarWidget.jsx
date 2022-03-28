@@ -5,23 +5,29 @@ import { Link } from 'react-router-dom'
 import { useCartContext } from '../../context/CarContext'
 
 function CarWidget() {
-  const { quantityIconCart } = useCartContext()
-
+  const { cartList, quantityIconCart } = useCartContext()
+  console.log('el valor de cartList.length es');
+  console.log(cartList.length);
   return (
     <>
         
-      <Link to='/cart'>
-        <img src={logo}
-            width="30"
-            height="30"
-            alt="carrito" 
-          
-        />
+        <Link to='/cart'>
+          <img src={logo}
+              width="30"
+              height="30"
+              alt="carrito" 
+            
+          />
         </Link>
 
-        <Badge bg="primary" pill  className="ms-2 ">
-          { quantityIconCart() }
-        </Badge>
+        {/* Styling condicional */}
+        {cartList.length === 0 ? 
+                <></>
+              :
+                <Badge bg="primary" pill  className="ms-2 ">
+                  { quantityIconCart() }
+                </Badge>
+        }        
 
     </>
 

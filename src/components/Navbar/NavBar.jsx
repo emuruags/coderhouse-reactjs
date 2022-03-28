@@ -12,12 +12,15 @@ import { NavLink, Link } from 'react-router-dom'
 import {useState, useEffect} from 'react';
 import { getFetchCategorias } from '../../helpers/getFetch'
 
+// import { useCartContext } from '../../context/CarContext'
+
 
 
 function NavBar() {
 
     const [prods, setProds] = useState ([])
 
+    // const {cartList} = useCartContext()
 
     useEffect ( () => {
 
@@ -109,7 +112,15 @@ function NavBar() {
                             <Nav>
 
                             <Nav.Link eventKey={2} href="#memes">
-                                <CarWidget/>
+
+                               <CarWidget/>
+
+                                {/* {cartList.length === 0 ? 
+                                        <></>
+                                    :
+                                    <CarWidget/>
+                                }    */}
+
                             </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>

@@ -11,10 +11,14 @@ import { BsTrash } from "react-icons/bs";
 import { useCartContext } from '../../context/CarContext'
 import Item from '../Item/Item'
 import Col from 'react-bootstrap/esm/Col';
+import { Link } from 'react-router-dom';
+import ItemDetailContainer from '../../containers/ItemDetailContainer/ItemDetailContainer';
 
 function Cart() {
 
   const {cartList, emptyCart, removeFromCart, quantityIconCart, totalPrice} = useCartContext()
+
+
 
   return (
     // <div>Cart</div>
@@ -41,48 +45,60 @@ function Cart() {
                           <Row className="pt-2">
                             <Col className='col-9'>
 
-                                <Row xs={1} md={1} className="g-4">
 
-                                  { cartList.map( (prod) =>   
-                                    <>
-                                      <Container>
-                                        <Row>
-                                          <Col>
-                                              <ListGroup as="ol" >
-                                                <ListGroup.Item key={prod.id} as="li" className="d-flex justify-content-between align-items-start"    >
-                                                  <div className="ms-2 ">
-                                                    <Card.Img variant="top" src={`${prod.foto}`} width="30" height="60"/>
-                                                  </div>
-                                                  <div className="ms-2 me-auto">
-                                                    <div className="fw-bold">{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</div>
-                                                    Precio
-                                                    {` U$S ${prod.price}`}
-                                                  </div>
+                            {cartList.length === 0  
+                              ?   
+                                  <div>
+                                      <h1>No hay productos en el carrito.</h1>
+                                      <Link to='/' >Ir a Comprar</Link>
+                                  </div>
+                              : 
+                                  <Row xs={1} md={1} className="g-4">
 
-                                                  Cantidad <Badge bg="primary" pill  className="ms-2 ">
-                                                    {prod.quantity}
-                                                  </Badge>
+                                      { cartList.map( (prod) =>   
+                                        <>
+                                          <Container>
+                                            <Row>
+                                              <Col>
+                                                  <ListGroup as="ol" >
+                                                    <ListGroup.Item key={prod.id} as="li" className="d-flex justify-content-between align-items-start"    >
+                                                      <div className="ms-2 ">
+                                                        <Card.Img variant="top" src={`${prod.foto}`} width="30" height="60"/>
+                                                      </div>
+                                                      <div className="ms-2 me-auto">
+                                                        <div className="fw-bold">{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</div>
+                                                        Precio
+                                                        {` U$S ${prod.price}`}
+                                                      </div>
 
-
-                                                  
-                                                  <Button bg="danger" pill  className="ms-3 " variant="outline-danger" onClick={ () => removeFromCart(prod.id) }>
-                                                    <BsTrash  className="pl-2 " />
-                                                  </Button>
-                                                </ListGroup.Item>
-
-
-                                              </ListGroup>
-                                          </Col>
+                                                      Cantidad <Badge bg="primary" pill  className="ms-2 ">
+                                                        {prod.quantity}
+                                                      </Badge>
 
 
-                                        </Row>
-                                      </Container>
-                                    </>
+                                                      
+                                                      <Button bg="danger" pill  className="ms-3 " variant="outline-danger" onClick={ () => removeFromCart(prod.id) }>
+                                                        <BsTrash  className="pl-2 " />
+                                                      </Button>
+                                                    </ListGroup.Item>
 
-                                  )}
+
+                                                  </ListGroup>
+                                              </Col>
 
 
-                                </Row>
+                                            </Row>
+                                          </Container>
+                                        </>
+
+                                      )}
+
+
+                                  </Row>
+                              }
+
+        
+
 
                             </Col>
                             <Col className='col-3'>
