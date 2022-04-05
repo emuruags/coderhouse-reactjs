@@ -13,10 +13,10 @@ function Item( {prod} ) {
 
 
         <Card key={prod.id} style={{ width: '18rem' }} >
-        <Card.Img variant="top" src={`${prod.foto}`} width="100" height="180"/>
+        <Card.Img variant="top" src={`${prod.productImg}`} width="100" height="180"/>
         <Card.Body>
-            <Card.Title>{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">{`U$S ${prod.price}`}</Card.Subtitle>
+            <Card.Title>{` ${prod.categoryDescription} - ${prod.productName}`}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{`U$S ${prod.productPrice}`}</Card.Subtitle>
             
             <div className='row'>
                 <Card.Text>

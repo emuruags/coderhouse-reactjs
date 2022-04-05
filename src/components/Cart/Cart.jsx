@@ -14,11 +14,59 @@ import Col from 'react-bootstrap/esm/Col';
 import { Link } from 'react-router-dom';
 import ItemDetailContainer from '../../containers/ItemDetailContainer/ItemDetailContainer';
 
+
+
+import { getFirestore, addDoc, collection } from 'firebase/firestore'
+
 function Cart() {
 
   const {cartList, emptyCart, removeFromCart, quantityIconCart, totalPrice} = useCartContext()
 
+  const generateOrder = (e) => {
+    e.preventDefault();
 
+    let order = {}
+
+      order.buyer = {
+          name: "Ezequiel",
+          email: "muruaezequiel@gmail.com",
+          phone: "123456"
+      }
+
+      order.total = totalPrice()
+
+      order.item = cartList.map( cartItem => {
+          const id = cartItem.id
+          const productName = cartItem.productName
+          const productPrice = cartItem.productPrice
+
+          return { id, productName, productPrice}
+      })
+
+      order.date = new Date()
+
+      console.log('la orden es:');
+      console.log(order);
+      const db = getFirestore()
+      const queryCollection = collection (db,'orders')
+
+      addDoc( queryCollection, order )
+      .then( resp => console.log(resp.id))
+      .finally(() => console.log('termino de cargar las orders'))
+
+
+
+  }
+
+  const setOrderId ( orderId ){
+      const db = getFirestore()
+      const queryCollection = collection (db,'orders')
+
+      const docOrden = db.collection('orders').doc(orderId)
+      // doc( queryCollection, order )
+      // .then( resp => console.log(resp.id))
+      // .finally(() => console.log('termino de cargar las orders'))
+  }
 
   return (
     // <div>Cart</div>
@@ -63,12 +111,12 @@ function Cart() {
                                                   <ListGroup as="ol" >
                                                     <ListGroup.Item key={prod.id} as="li" className="d-flex justify-content-between align-items-start"    >
                                                       <div className="ms-2 ">
-                                                        <Card.Img variant="top" src={`${prod.foto}`} width="30" height="60"/>
+                                                        <Card.Img variant="top" src={`${prod.productImg}`} width="30" height="60"/>
                                                       </div>
                                                       <div className="ms-2 me-auto">
-                                                        <div className="fw-bold">{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</div>
+                                                        <div className="fw-bold">{` ${prod.categoryDescription} - ${prod.productName}`}</div>
                                                         Precio
-                                                        {` U$S ${prod.price}`}
+                                                        {` U$S ${prod.productPrice}`}
                                                       </div>
 
                                                       Cantidad <Badge bg="primary" pill  className="ms-2 ">
@@ -116,7 +164,7 @@ function Cart() {
                                       
                                     </Card.Text>
                                     <div>
-                                      <Button variant="primary">Pagar</Button>
+                                      <Button variant="primary" onClick={ generateOrder }> Generar Orden - Pagar</Button>
                                     </div>
                                     <div>
                                       <Button className='mt-2 ' size="sm" variant="outline-danger" onClick={ emptyCart } >

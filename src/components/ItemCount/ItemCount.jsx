@@ -16,8 +16,8 @@ function ItemCount( {stock, onAdd} ) {
 
     const constStock = parseInt(stock);
     
-    //console.log('el stock es');
-    //console.log(constStock);
+    // console.log('el stock es');
+    // console.log(constStock);
 
     const onIncrease= () => {
         if (countItem < constStock ) {

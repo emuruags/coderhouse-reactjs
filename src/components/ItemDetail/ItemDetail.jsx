@@ -32,14 +32,13 @@ function ItemDetail( {prod} ) {
     const onAdd = (countItem) => {
 
 
-        if (prod.stock >= countItem) {
+        if (prod.productStock >= countItem) {
             // Hemos recibido un evento del ItemCount
-            console.log('el valor de countItem es:');
-            console.log(countItem);
+            // console.log('el valor de countItem es:');
+            // console.log(countItem);
 
             /// Agregamos el item al contexto
             addToCart( { ...prod, quantity: countItem } );
-            
             setCheckout(true);
         }
 
@@ -63,12 +62,12 @@ function ItemDetail( {prod} ) {
                         <div className="my-3 p-3">
 
                             <Card key={prod.id} style={{ width: '18rem' }} >
-                                <Card.Img variant="top" src={`${prod.foto}`} width="100" height="180"/>
+                                <Card.Img variant="top" src={`${prod.productImg}`} width="100" height="180"/>
                                 <Card.Body>
-                                    <Card.Title>{` ${prod.categoriaDescripcion} - ${prod.nameProducto}`}</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">{`U$S ${prod.price}`}</Card.Subtitle>
+                                    <Card.Title>{` ${prod.categoryDescription} - ${prod.productName}`}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">{`U$S ${prod.productPrice}`}</Card.Subtitle>
                                     <Card.Text>
-                                        {`${prod.descriptionProducto}`}
+                                        {`${prod.productDescription}`}
                                     </Card.Text>
                                 </Card.Body>
                                 <Card.Footer>
@@ -99,7 +98,7 @@ function ItemDetail( {prod} ) {
                                         {/* Funcionalidad SIN "Ver Carrito" */}
                                         <Row>
                                             <Col>
-                                                { isCheckout ? <ItemCheckOut/> : <ItemCount initial={1} stock={prod.stock} onAdd = { onAdd }/>}
+                                                { isCheckout ? <ItemCheckOut/> : <ItemCount initial={1} stock={prod.productStock} onAdd = { onAdd }/>}
                                             </Col>                                            
                                         </Row>
 

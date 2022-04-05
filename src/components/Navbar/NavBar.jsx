@@ -13,6 +13,7 @@ import {useState, useEffect} from 'react';
 import { getFetchCategorias } from '../../helpers/getFetch'
 
 // import { useCartContext } from '../../context/CarContext'
+import { collection, doc, getDoc, getDocs, getFirestore, limit, query, where , orderBy} from 'firebase/firestore'
 
 
 
@@ -22,21 +23,46 @@ function NavBar() {
 
     // const {cartList} = useCartContext()
 
-    useEffect ( () => {
+    // useEffect ( () => {
 
 
-        getFetchCategorias
-        .then( resp => setProds(resp))
+    //     getFetchCategorias
+    //     .then( resp => setProds(resp))
 
-        .catch( err => console.log(err))
-        .finally( () => console.log('termino de cargar el promise filtrado'))
+    //     .catch( err => console.log(err))
+    //     .finally( () => console.log('termino de cargar el promise filtrado'))
 
         
 
-        }, []);
+    //     }, []);
+
     
-        console.log('ver el contenido de prods');
-        console.log(prods);
+
+        // useEffect ( () => {
+
+
+        //     getFetchCategoriasFirebase
+        // .then( resp => setProds(resp))
+
+        // .catch( err => console.log(err))
+        // .finally( () => console.log('termino de cargar el promise filtrado'))
+
+        
+
+        // }, []);
+
+        useEffect(()=> {
+            const db = getFirestore()
+        
+            const queryCollection =  collection(db, 'categorys' )
+            const queryFilter = query(queryCollection , orderBy("key"))
+            getDocs(queryFilter)
+            .then(resp => setProds( resp.docs.map(prod =>( {id: prod.id, ...prod.data()}) ) ) )
+            .catch(err => console.log(err))
+            .finally( () => console.log('termino de cargar el promise'))  
+
+          }, [])
+    
 
   return (
 
@@ -70,10 +96,10 @@ function NavBar() {
                                 { prods.map( (prods) =>  
 
                                     <>
-                                        <NavLink  key={prods.idCategoria} to={`/categoria/${prods.idCategoria}`}>
+                                        <NavLink  key={prods.key} to={`/categoria/${prods.key}`}>
                                             
         
-                                            {` ${prods.categoriaDescripcion}`}
+                                            {` ${prods.categoryDescription}`}
                                             
                                         </NavLink>
                                         <br/>
@@ -88,10 +114,10 @@ function NavBar() {
                             { prods.map( (prods) =>  
 
                                 <>
-                                    <NavLink  key={prods.idCategoria} to={`/categoria/${prods.idCategoria}`}>
+                                    <NavLink  key={prods.key} to={`/categoria/${prods.key}`}>
                                         
 
-                                        {`${prods.categoriaDescripcion}`}
+                                        {`${prods.categoryDescription}`}
                                         
                                     </NavLink>
 
