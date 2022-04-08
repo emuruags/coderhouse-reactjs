@@ -11,7 +11,7 @@ function CarWidget() {
   return (
     <>
         
-        <Link to='/cart'>
+        <Link to='/CartList'>
           <img src={logo}
               width="30"
               height="30"

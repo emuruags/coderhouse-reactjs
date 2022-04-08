@@ -9,8 +9,10 @@ import ItemListContainer from './containers/ItemListContainer';
 import ItemCount from './components/ItemCount/ItemCount';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import Cart from './components/Cart/Cart';
+
 import CartContextProvider from './context/CarContext';
+import CartList from './components/CartList/CartList';
+import CartItemContainer from './containers/CartItemContainer/CartItemContainer';
 
 
 
@@ -46,8 +48,13 @@ function App() {
               
 
             />
-            <Route path='/cart' 
+            {/* <Route path='/cart' 
                     element={ <Cart/> }
+              
+
+            /> */}
+            <Route path='/cartList' 
+                    element={ <CartItemContainer/> }
               
 
             />

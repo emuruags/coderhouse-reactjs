@@ -7,7 +7,10 @@ function ItemCheckOut() {
   return (
     // <div>ItemCheckOut</div>
     <>
-        <Link to='/cart'>
+        {/* <Link to='/cart'>
+            <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={console.log('ir a cart') } >Finalizar Compra</Button>
+        </Link> */}
+        <Link to='/CartList'>
             <Button className='mt-2 ' size="sm" variant="outline-secondary" onClick={console.log('ir a cart') } >Finalizar Compra</Button>
         </Link>
         <Link to='/'>
