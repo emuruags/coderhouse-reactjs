@@ -10,7 +10,7 @@ OR
 https://emuruags.github.io/coderhouse-react.github.io/
 
 ## Video de Funcionamiento
-https://commons.wikimedia.org/wiki/File:React-icon.svg)
+https://drive.google.com/drive/folders/1iekyLCgvPszApwpRjDacswjalwdtGruV?usp=sharing
 
 ## Descripción del proyecto
 > El proyecto es un eCommece de elementos deportivos desarrollado en ReactJS. En el mismo se podrán adquirir Barras Olímpicas, Discos Olímpicos y Racks.
