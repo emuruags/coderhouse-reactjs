@@ -3,9 +3,11 @@
 
 [![R|React](https://firebasestorage.googleapis.com/v0/b/coderhouse-reactjs-ecommerce.appspot.com/o/img%2Flogo%2Flogo.jpg?alt=media&token=e5b8139d-aa48-4b07-8ac4-070d1b41860b)]
 ## Live Demo
-https://commons.wikimedia.org/wiki/File:React-icon.svg)
+https://emuruags.github.io/
+
 ## Video de Funcionamiento
 https://commons.wikimedia.org/wiki/File:React-icon.svg)
+
 ## Descripción del proyecto
 > El proyecto es un eCommece de elementos deportivos desarrollado en ReactJS. En el mismo se podrán adquirir Barras Olímpicas, Discos Olímpicos y Racks.
     El sitio cuenta con una barra de navegabilidad que nos permite movernos entre las diferentes categorías de productos. Al encontrar un producto que nos guste podemos ver un detalle más específico del mismo, comprar la cantidad deseada hasta el máximo de stock disponible. En caso de que no haya stock el sitio lo indicará y no permitirá agregar un ítem de ese producto al carrito.
