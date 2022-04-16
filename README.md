@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# React JS - eCommerce
+## Vikings Fitness Gear
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![R|React](https://firebasestorage.googleapis.com/v0/b/coderhouse-reactjs-ecommerce.appspot.com/o/img%2Flogo%2Flogo.jpg?alt=media&token=e5b8139d-aa48-4b07-8ac4-070d1b41860b)]
+## Live Demo
+https://commons.wikimedia.org/wiki/File:React-icon.svg)
+## Video de Funcionamiento
+https://commons.wikimedia.org/wiki/File:React-icon.svg)
+## Descripción del proyecto
+> El proyecto es un eCommece de elementos deportivos desarrollado en ReactJS. En el mismo se podrán adquirir Barras Olímpicas, Discos Olímpicos y Racks.
+    El sitio cuenta con una barra de navegabilidad que nos permite movernos entre las diferentes categorías de productos. Al encontrar un producto que nos guste podemos ver un detalle más específico del mismo, comprar la cantidad deseada hasta el máximo de stock disponible. En caso de que no haya stock el sitio lo indicará y no permitirá agregar un ítem de ese producto al carrito.
 
-## Available Scripts
+## Secciones
+- Listado de productos 
+     > Página de inicio del sitio la cual desplegará todos los productos de la tienda. Cada producto con tiene una mínima descripción, precio y la posibilidad de navegar a un detalle más amplio del mismo.
+- Detalle de un producto
+     > Esta página otorga un detalle más amplio del producto, así como también, la posibilidad de indicar cuántos ítems se desean comprar y agregarlos al carrito. Al agregar al menos un ítem al carrito se habilita la opción de seguir comprando o finalizar la compra la cual nos llevará al carrito.
+- Carrito de compras
+     > Esta sección otorga una vista del carrito de compras. En caso de estar vacío permitirá ir a la vista de productos.
+Al tener productos agregados al carrito mostrará un mínimo detalle de dichos productos y la cantidad de unidades. Tendremos la posibilidad de eliminar un producto particular del listado o vaciar todo el carrito de compras.
+En esta sección también contamos con un apartado de resumen, el cual nos mostrará la cantidad total de unidades y el importe total a abonar.
+Al momento de decidir hacer un check out accederemos a un formulario de carga de datos mínimos del cliente, los cuales usaremos para generar una orden de compra.
 
-In the project directory, you can run:
+## Librerías
 
-### `npm start`
+A continuación se detallan librerías utilizados.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Library | README | Version  |
+| ------ | ------ | ------  |
+| react | https://es.reactjs.org/docs/getting-started.html | ^17.0.2
+| firebase | https://firebase.google.com/docs?authuser=0&hl=es| ^9.6.10
+| react-bootstrap | https://react-bootstrap.github.io/getting-started/introduction | ^2.1.2
+| react-dom | https://es.reactjs.org/docs/react-dom.html | ^17.0.2
+| react-router-dom | https://v5.reactrouter.com/web/guides/quick-start |^6.2.2
+| react-icons | https://react-icons.github.io/react-icons | ^4.3.1

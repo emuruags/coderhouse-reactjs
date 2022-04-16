@@ -8,11 +8,6 @@ function CartContextProvider({children}) {
     const [cartList, setCartList] = useState([])
 
     const addToCart = (item) => {
-
-        // console.log('console.log de item');
-        // console.log(item);
-        // const prod = cartList.find(x => parseInt (x.id) === parseInt(item.id) )
-        // const index = cartList.findIndex(x => parseInt (x.id) === parseInt(item.id) )
         const index = cartList.findIndex(x => x.id === item.id )
 
         if (index > -1) {
@@ -26,7 +21,6 @@ function CartContextProvider({children}) {
         }
         
     }
-
     
     /// vaia el carrito Clear
     const emptyCart = () =>{
@@ -35,30 +29,21 @@ function CartContextProvider({children}) {
 
     /// eliminar 1 item
     const removeFromCart = (item) => {
-        //Verificamos si esta en el carrito   
-        // console.log('el item id a borrar tiene:');
-        // console.log(item);
-        // const deleteItem = cartList.filter((prod) => parseInt( prod.id) !== parseInt(item));
         const deleteItem = cartList.filter((prod) =>  prod.id !== item);
-        // console.log('el filtrado a borrar qiente');
-        // console.log(deleteItem);
-        
         setCartList([...deleteItem]);
       };   
   
 
     const isInCart = (item) => {
-        /// Busca un item en el carro y devuelve true or false
-        // return cartList.find(x => x.id === parseInt(item.id) ) 
         return cartList.find(x => x.id === item.id ) 
     }
 
     const quantityIconCart = () => {
-        return cartList.reduce( (acumulado, item) => acumulado + item.quantity, 0)         
+        return cartList.reduce( (acum, item) => acum + item.quantity, 0)         
     }
 
     const totalPrice =()=>{
-        return cartList.reduce((acum, valor) => (acum + (valor.quantity *  valor.productPrice)) , 0) 
+        return cartList.reduce((acum, item) => (acum + (item.quantity *  item.productPrice)) , 0) 
     }
 
     return (

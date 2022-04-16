@@ -6,11 +6,9 @@ import { useCartContext } from '../../context/CarContext'
 
 function CarWidget() {
   const { cartList, quantityIconCart } = useCartContext()
-  console.log('el valor de cartList.length es');
-  console.log(cartList.length);
+
   return (
     <>
-        
         <Link to='/CartList'>
           <img src={logo}
               width="30"
@@ -19,19 +17,11 @@ function CarWidget() {
             
           />
         </Link>
-
-        {/* Styling condicional */}
-        {cartList.length === 0 ? 
-                <></>
-              :
-                <Badge bg="primary" pill  className="ms-2 ">
-                  { quantityIconCart() }
-                </Badge>
+        { 
+          cartList.length === 0 ?   <></>
+                                :   <Badge bg="primary" pill  className="ms-2 "> { quantityIconCart() } </Badge>
         }        
-
-    </>
-
-     
+    </>    
   )
 }
 

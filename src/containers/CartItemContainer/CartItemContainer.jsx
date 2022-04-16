@@ -1,30 +1,26 @@
-import { addDoc, collection,  documentId,  FieldPath, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { addDoc, collection,  documentId,  getDocs, getFirestore, query, where, writeBatch } from 'firebase/firestore';
 import React from 'react'
 import Order from '../../components/Order/Order';
 import { useCartContext } from '../../context/CarContext';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import CartList from '../../components/CartList/CartList';
 
 function CartItemContainer() {
     
     const [order, setOrder] = useState(undefined);
     const [orderId, setOrderId] = useState(undefined);
-    const [message, setMessage] = useState('');
     const {cartList, emptyCart, totalPrice} = useCartContext();
 
     // Funcion para validar stock en firebase y armar la orden
     const generateOrder = (name, email, phone) =>{
 
         setOrder(undefined);
-        setMessage("");
 
-        const db = getFirestore()
-        
+        const db = getFirestore();        
         const queryItemsCollection =  collection(db, 'items' )
         const queryItemsFilter = query(queryItemsCollection , 
                                     where( documentId() , 'in', cartList.map( x=> x.id))
                                     )
-
         getDocs(queryItemsFilter)
             .then(
                 (itemsSnapshot) => {
@@ -56,20 +52,16 @@ function CartItemContainer() {
                                                         } )
 
                             } else {
-                                setMessage('Lo sentimos! No hay stock disponible.')
+                                
                                 break;
                             }
 
                         }
                     }
-
                     setOrder(tempOrder)
-
                 }
             )
             .catch(err => console.log(err))
-
-            .finally( () => console.log('termino de cargar el promise generateOrder'))  
         
     }
     
@@ -77,28 +69,34 @@ function CartItemContainer() {
     const saveOrder = () => {
         const db = getFirestore()
         const queryOrderCollection = collection (db,'orders')
-
         addDoc( queryOrderCollection, order )
             .then( queryOrderSnapshot => {
-                    console.log('SU ORDEN DE COMPRA ES');
-                    console.log(queryOrderSnapshot.id);
                     setOrderId(queryOrderSnapshot.id);
-                    setMessage('');
                     emptyCart();
                 } )
             .catch( err => console.log(err) )
-            .finally( () => console.log('termino de cargar las orders') )
+    }
+
+    // Funcion para actualizar el stock del item en firebase
+    const updateItemStock = async () => {
+        const db = getFirestore()
+        const queryItemsCollection = collection (db,'items')
+        const queryUpdateItemsStock = query(queryItemsCollection, where( documentId(), 'in', cartList.map( x => x.id)))
+        const batch = writeBatch(db)
+        await getDocs(queryUpdateItemsStock)
+                .then( resp => resp.docs.forEach(res => batch.update( res.ref, {
+                    productStock: res.data().productStock - cartList.find(item => item.id === res.id).quantity
+                    })))
+                .catch( err => console.log(err) )
+            batch.commit()
     }
 
     return (
     <>
         {
-
-            orderId ? <Order orderId={ orderId }/> 
-                    : <CartList generateOrder = { generateOrder } order= { order } saveOrder={ saveOrder } message={ message }/>
+            orderId ? <Order orderId = { orderId } /> 
+                    : <CartList generateOrder = { generateOrder } order= { order } saveOrder = { saveOrder } updateItemStock = {updateItemStock} />
         }
-
-        
     </>
   )
 }

@@ -7,7 +7,6 @@ function Order( {orderId} ) {
     <>
         <Container>
             <Row className="mt-5">
-                {/* <h3> ¡Felicitaciones! Su orden de compra es : {orderId}</h3> */}
                 <Card >
                     <Card.Title className="mt-3">¡Felicitaciones!</Card.Title>
                     <Card.Body className="mt-32">Su orden de compra es : <h3> {orderId}</h3> </Card.Body>
